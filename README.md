@@ -21,6 +21,11 @@ created in the admin. If the API is unavailable, project rows and details remain
 empty instead of showing static projects. See the workspace-level `README.md`
 for the three-app admin setup.
 
+For Vercel, set `BACKEND_URL` and `NEXT_PUBLIC_API_URL` to
+`https://shilp-backend-dusky.vercel.app` in this website project's Production
+environment variables, then redeploy. Add `https://shilp-website.vercel.app`
+to the backend's `ADMIN_ORIGIN` value so browser API requests pass CORS checks.
+
 ## Folder structure
 
 ```

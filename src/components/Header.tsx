@@ -31,7 +31,9 @@ export default function Header() {
 
   useEffect(() => {
     let cancelled = false;
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081';
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || (process.env.NODE_ENV === 'production'
+      ? 'https://shilp-backend-dusky.vercel.app'
+      : 'http://localhost:8081');
 
     fetch(`${apiUrl}/api/projects?limit=200`)
       .then((response) => {

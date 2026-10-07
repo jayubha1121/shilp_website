@@ -27,7 +27,9 @@ type ApiProject = {
   plotSize: string;
 };
 
-const backendUrl = process.env.BACKEND_URL || 'http://localhost:8081';
+const backendUrl = process.env.BACKEND_URL || (process.env.VERCEL
+  ? 'https://shilp-backend-dusky.vercel.app'
+  : 'http://localhost:8081');
 
 export async function getFeaturedProject(): Promise<ApiProject | null> {
   try {
