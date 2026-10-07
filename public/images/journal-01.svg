@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1000" width="900" height="1000" role="img" aria-label="Journal 01">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#8d97a2"/>
+      <stop offset="1" stop-color="#5c6670"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1000" fill="url(#g)"/>
+  <g fill="#ffffff" opacity="0.14">
+    <rect x="72" y="350" width="162" height="650"/>
+    <rect x="558" y="220" width="198" height="780"/>
+  </g>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
+        font-family="Helvetica, Arial, sans-serif" font-size="49" letter-spacing="6"
+        fill="#ffffff" opacity="0.72">Journal 01</text>
+  <text x="50%" y="580" text-anchor="middle" font-family="Helvetica, Arial, sans-serif"
+        font-size="25" letter-spacing="3" fill="#ffffff" opacity="0.45">900 × 1000 — replace me</text>
+</svg>

@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-body: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: #ffffff;
+  color: #0d0d0d;
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell min-w-0 px-5 sm:px-8 lg:px-14;
+  }
+
+  /* Index rows used by the commercial / residential / plotted tables */
+  .index-row {
+    @apply grid items-center gap-3 border-b border-hairline py-5 text-[16px] sm:py-6;
+    grid-template-columns: 18px minmax(0, 1.5fr) minmax(0, 1fr) 14px;
+  }
+
+  @screen sm {
+    .index-row--two {
+      grid-template-columns: 20px minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr) 46px 16px;
+    }
+
+    .index-row--three {
+      grid-template-columns: 20px minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1fr) 46px 16px;
+    }
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-3 rounded-full border border-current px-5 py-2.5 text-[10px] uppercase tracking-micro transition-colors duration-200;
+  }
+
+  .banner-type {
+    @apply text-[clamp(1.2rem,3.4vw,2.6rem)] font-light tracking-banner;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: #0d0d0d;
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+

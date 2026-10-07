@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 950" width="1800" height="950" role="img" aria-label="Banner — Context Matters">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#7fa86a"/>
+      <stop offset="1" stop-color="#3f6b33"/>
+    </linearGradient>
+  </defs>
+  <rect width="1800" height="950" fill="url(#g)"/>
+  <g fill="#ffffff" opacity="0.14">
+    <rect x="144" y="332" width="324" height="617"/>
+    <rect x="1116" y="209" width="396" height="741"/>
+  </g>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
+        font-family="Helvetica, Arial, sans-serif" font-size="52" letter-spacing="6"
+        fill="#ffffff" opacity="0.72">Banner — Context Matters</text>
+  <text x="50%" y="551" text-anchor="middle" font-family="Helvetica, Arial, sans-serif"
+        font-size="26" letter-spacing="3" fill="#ffffff" opacity="0.45">1800 × 950 — replace me</text>
+</svg>
