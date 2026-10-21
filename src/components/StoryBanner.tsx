@@ -1,12 +1,18 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import ResponsiveBannerImage from '@/components/ResponsiveBannerImage';
+import type { LivePageBanner } from '@/lib/live-page-banners';
 import type { StoryBannerContent } from '@/types/content';
 
-export default function StoryBanner({ title, subtitle, image, imageAlt, href }: StoryBannerContent) {
+export default function StoryBanner({ title, subtitle, image, imageAlt, banner }: StoryBannerContent & { banner?: LivePageBanner | null }) {
   return (
     <section className="shell py-10 sm:py-14">
-      <Link href={href} className="group relative block aspect-[16/10] w-full overflow-hidden sm:aspect-[16/8]">
-        <Image src={image} alt={imageAlt} fill sizes="100vw" className="object-cover" />
+      <div className="relative aspect-[16/10] w-full overflow-hidden sm:aspect-[16/8]">
+        <ResponsiveBannerImage
+          desktopImage={banner?.desktopImage || image}
+          mobileImage={banner?.mobileImage || banner?.desktopImage || image}
+          fallbackImage={image}
+          alt={banner?.imageAlt || imageAlt}
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-black/25" />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white">
@@ -15,7 +21,7 @@ export default function StoryBanner({ title, subtitle, image, imageAlt, href }: 
             {subtitle}
           </p>
         </div>
-      </Link>
+      </div>
     </section>
   );
 }

@@ -11,6 +11,18 @@ const backendUrl = process.env.BACKEND_URL || (process.env.VERCEL
   ? 'https://shilp-backend-dusky.vercel.app'
   : 'http://localhost:8081');
 
+function publicBannerImage(value: string): string {
+  try {
+    const url = new URL(value);
+    if (['localhost', '127.0.0.1'].includes(url.hostname) && url.pathname.startsWith('/api/uploads/')) {
+      return `${backendUrl}${url.pathname}${url.search}`;
+    }
+  } catch {
+    return value;
+  }
+  return value;
+}
+
 export async function getLivePageBanners(): Promise<LivePageBanner[] | null> {
   try {
     const response = await fetch(`${backendUrl}/api/page-banners`, { cache: 'no-store' });
@@ -19,8 +31,8 @@ export async function getLivePageBanners(): Promise<LivePageBanner[] | null> {
     if (!Array.isArray(result.data)) return null;
 
     return result.data.flatMap((banner) => {
-      const desktopImage = typeof banner?.desktopImage === 'string' ? banner.desktopImage.trim() : '';
-      const mobileImage = typeof banner?.mobileImage === 'string' ? banner.mobileImage.trim() : '';
+      const desktopImage = typeof banner?.desktopImage === 'string' ? publicBannerImage(banner.desktopImage.trim()) : '';
+      const mobileImage = typeof banner?.mobileImage === 'string' ? publicBannerImage(banner.mobileImage.trim()) : '';
       if (!desktopImage && !mobileImage) return [];
 
       const fallbackImage = desktopImage || mobileImage;

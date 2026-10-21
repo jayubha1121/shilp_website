@@ -149,7 +149,6 @@ export interface StoryBannerContent {
   subtitle: string;
   image: string;
   imageAlt: string;
-  href: string;
 }
 
 export interface Spirit {

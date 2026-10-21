@@ -23,9 +23,14 @@ export default async function CommercialIndex({ banner }: { banner: LivePageBann
         </Link>
       </div>
 
-      {banner && <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden bg-[#e5e4df] sm:mt-14">
-        <ResponsiveBannerImage desktopImage={banner.desktopImage} mobileImage={banner.mobileImage} alt={banner.imageAlt} />
-      </div>}
+      <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden bg-[#e5e4df] sm:mt-14">
+        <ResponsiveBannerImage
+          desktopImage={banner?.desktopImage || commercial.banner}
+          mobileImage={banner?.mobileImage || banner?.desktopImage || commercial.banner}
+          fallbackImage={commercial.banner}
+          alt={banner?.imageAlt || commercial.bannerAlt}
+        />
+      </div>
 
       <div className="mt-14 grid min-w-0 gap-8 lg:grid-cols-12 lg:gap-8">
         <div className="min-w-0 lg:col-span-7">

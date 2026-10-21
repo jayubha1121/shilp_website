@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import ComingSoon from '@/components/ComingSoon';
 import { getCompanyPage } from '@/components/CompanyPages';
 
@@ -49,6 +50,9 @@ export function generateMetadata({ params }: { params: { slug: string[] } }): Me
 }
 
 export default async function CatchAllPage({ params }: { params: { slug: string[] } }) {
-  const Page = getCompanyPage(getRouteName(params.slug));
+  const route = getRouteName(params.slug);
+  if (route === 'stories/family-matters' || route === 'stories/context-matters') notFound();
+
+  const Page = getCompanyPage(route);
   return Page ? await Page() : <ComingSoon pageName={formatPageName(params.slug)} />;
 }

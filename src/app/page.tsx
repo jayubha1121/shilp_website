@@ -25,10 +25,10 @@ export default async function HomePage() {
         <About />
         <Stats />
         <CommercialIndex banner={bannerFor('commercial')} />
-        <StoryBanner {...familyBanner} />
-        <ResidentialIndex banner={bannerFor('residential')} />
-        <StoryBanner {...contextBanner} />
-        <PlottedIndex banner={bannerFor('plotted')} />
+        <StoryBanner {...familyBanner} banner={bannerFor('residential')} />
+        <ResidentialIndex />
+        <StoryBanner {...contextBanner} banner={bannerFor('plotted')} />
+        <PlottedIndex />
         <Spirit />
         <Journal />
         <Testimonials />
