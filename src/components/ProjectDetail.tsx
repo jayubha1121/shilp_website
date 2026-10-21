@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import type { ProjectDetail as ProjectDetailData } from '@/types/content';
 import Header from '@/components/Header'; 
 import Footer from '@/components/Footer';
+import ResponsiveBannerImage from '@/components/ResponsiveBannerImage';
 
 function getYouTubeEmbedUrl(value: string) {
   try {
@@ -71,9 +72,8 @@ export function ProjectDetail({ project }: { project: ProjectDetailData }) {
     <>
       <Header />
       <main className="overflow-x-hidden bg-white">
-        <section className="relative h-[calc(100svh-4.5rem)] min-h-[420px] w-screen overflow-hidden bg-[#8ca0ad] max-md:h-[calc(100svh-4rem)] max-md:min-h-[360px]">
-          {project.heroImage && <Image src={project.heroImage} alt={project.heroImageAlt} fill priority sizes="100vw" unoptimized className="hidden object-cover md:block" />}
-          {project.mobileHeroImage && <Image src={project.mobileHeroImage} alt={project.heroImageAlt} fill priority={false} sizes="100vw" unoptimized className="object-cover md:hidden" />}
+        <section className="relative h-[calc(100svh-4.5rem)] min-h-[420px] w-full overflow-hidden bg-[#8ca0ad] max-md:h-[calc(100svh-4rem)] max-md:min-h-[360px]">
+          <ResponsiveBannerImage desktopImage={project.heroImage} mobileImage={project.mobileHeroImage} alt={project.heroImageAlt} priority />
           <div className="absolute inset-0 bg-black/10" />
         </section>
 

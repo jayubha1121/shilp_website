@@ -11,19 +11,18 @@ export const primaryNav: NavEntry[] = [
   { label: 'Projects', href: '/projects', children: [] },
   {
     label: 'About Us',
-    href: '/about',
-    // Dropdown panel opens under About Us.
+    href: '/about-us',
     children: [
-      { label: 'Our Work', href: '/about/our-work' },
-      { label: 'Career', href: '/about/career' },
-      { label: 'Team', href: '/about/team' },
-      { label: 'Project Tree', href: '/about/project-tree' },
+      { label: 'Our Work', href: '/our-work' },
+      { label: 'Careers', href: '/careers' },
+      { label: 'Our Team', href: '/our-team' },
+      { label: 'Project Tree', href: '/project-overview' },
     ],
   },
   { label: 'Sneh Shilp Foundation', href: 'https://snehshilp.org/', children: [] },
 ];
 
-export const headerCta: NavLink = { label: 'Contact Us', href: '/contact' };
+export const headerCta: NavLink = { label: 'Contact Us', href: '/contact-us' };
 
 export const footer: Footer = {
   blurb:
@@ -36,9 +35,11 @@ export const footer: Footer = {
     {
       heading: 'Company',
       links: [
-        { label: 'About Us', href: '/about' },
-        { label: 'Our Team', href: '/about/team' },
-        { label: 'Career', href: '/about/career' },
+        { label: 'About Us', href: '/about-us' },
+        { label: 'Our Team', href: '/our-team' },
+        { label: 'Careers', href: '/careers' },
+        { label: 'Our Work', href: '/our-work' },
+        { label: 'Contact Us', href: '/contact-us' },
         { label: 'Blogs', href: '/blogs' },
       ],
     },
@@ -48,7 +49,7 @@ export const footer: Footer = {
         { label: 'Residential Projects', href: '/projects/residential' },
         { label: 'Commercial Projects', href: '/projects/commercial' },
         { label: 'Plotted Development Projects', href: '/projects/plotted' },
-        { label: 'Project Tree', href: '/about/project-tree' },
+        { label: 'Project Tree', href: '/project-overview' },
       ],
     },
   ],

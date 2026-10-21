@@ -1,6 +1,4 @@
-import type { Hero } from '@/types/content';
-
-export const hero: Hero = {
+export const hero = {
   kicker: 'Placing',
   title: 'Relationships First',
   meta: {
@@ -9,6 +7,4 @@ export const hero: Hero = {
     project: 'Shilp Twin Towers',
     location: 'Gujarat International Finance Tec-City, Gandhinagar',
   },
-  image: '/images/homebanner.png',
-  imageAlt: 'Shilp Twin Towers rising against an open sky',
 };

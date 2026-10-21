@@ -10,22 +10,25 @@ import Spirit from '@/components/Spirit';
 import Journal from '@/components/Journal';
 import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
+import { getLivePageBanners } from '@/lib/live-page-banners';
 
 import { familyBanner, contextBanner } from '@data/banners';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const banners = await getLivePageBanners();
+  const bannerFor = (page: 'home' | 'commercial' | 'residential' | 'plotted') => banners?.find((item) => item.page === page) || null;
   return (
     <>
       <Header />
       <main>
-        <Hero />
+        <Hero banner={bannerFor('home')} />
         <About />
         <Stats />
-        <CommercialIndex />
+        <CommercialIndex banner={bannerFor('commercial')} />
         <StoryBanner {...familyBanner} />
-        <ResidentialIndex />
+        <ResidentialIndex banner={bannerFor('residential')} />
         <StoryBanner {...contextBanner} />
-        <PlottedIndex />
+        <PlottedIndex banner={bannerFor('plotted')} />
         <Spirit />
         <Journal />
         <Testimonials />
