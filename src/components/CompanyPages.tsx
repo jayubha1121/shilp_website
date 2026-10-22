@@ -51,12 +51,12 @@ function PageHero({
   );
 }
 
-function IntroHeading({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
+function IntroHeading({ eyebrow, title, text, titleClassName, centered = false }: { eyebrow: string; title: string; text: string; titleClassName?: string; centered?: boolean }) {
   return (
-    <div className="grid gap-6 border-b border-black/10 pb-8 sm:grid-cols-[.8fr_1.2fr] sm:items-end sm:pb-10">
+    <div className={`grid gap-6 border-b border-black/10 pb-8 sm:pb-10 ${centered ? 'text-center' : 'sm:grid-cols-[.8fr_1.2fr] sm:items-end'}`}>
       <p className="text-[10px] uppercase tracking-[.2em] text-ink/50">{eyebrow}</p>
-      <div>
-        <h2 className="max-w-3xl text-[clamp(2rem,4.2vw,4rem)] font-light leading-[1.04] tracking-[-.045em]">{title}</h2>
+      <div className={centered ? 'flex flex-col items-center' : ''}>
+        <h2 className={`max-w-3xl ${titleClassName || 'text-[clamp(2rem,4.2vw,4rem)]'} font-light leading-[1.04] tracking-[-.045em]`}>{title}</h2>
         <p className="mt-5 max-w-2xl text-sm leading-relaxed text-ink/65">{text}</p>
       </div>
     </div>
@@ -147,24 +147,26 @@ async function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-[#111] py-16 text-white sm:py-24">
+      <section className="bg-[#111] py-12 text-white sm:py-16">
         <div className="shell">
           <IntroHeading
             eyebrow="What guides us"
             title="Built with purpose. Grounded in trust."
             text="A long-term commitment to creating places that remain relevant and valuable long after they are built."
+            titleClassName="text-[clamp(1.5rem,3vw,2.8rem)]"
+            centered
           />
-          <div className="mt-10 grid gap-10 sm:grid-cols-2">
-            <article className="border-t border-white/20 pt-5">
+          <div className="mt-8 grid gap-7 sm:grid-cols-2">
+            <article className="border-t border-white/20 pt-4">
               <p className="text-[10px] uppercase tracking-[.2em] text-white/50">Our mission</p>
-              <p className="mt-4 max-w-xl text-xl font-light leading-relaxed sm:text-2xl">
+              <p className="mt-3 max-w-xl text-base font-light leading-relaxed sm:text-lg">
                 Building world-class commercial and residential spaces that meet every need and create lasting
                 value for customers, employees and the community.
               </p>
             </article>
-            <article className="border-t border-white/20 pt-5">
+            <article className="border-t border-white/20 pt-4">
               <p className="text-[10px] uppercase tracking-[.2em] text-white/50">Our vision</p>
-              <p className="mt-4 max-w-xl text-xl font-light leading-relaxed sm:text-2xl">
+              <p className="mt-3 max-w-xl text-base font-light leading-relaxed sm:text-lg">
                 To be the obvious, most trusted choice in real estate—creating a better, liveable and comfortable
                 life for everyone.
               </p>
@@ -185,13 +187,12 @@ async function AboutPage() {
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((person) => (
-            <div key={person.name} className="relative flex aspect-[4/4.5] flex-col justify-end overflow-hidden bg-[#eeede9] p-6 text-white">
-              <Image src={person.image} alt={person.name} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-              <div className="relative">
-                <h3 className="mt-5 text-lg">{person.name}</h3>
-                <p className="mt-1 text-xs text-white/80">{person.role}</p>
+            <div key={person.name}>
+              <div className="relative aspect-[4/4.5] overflow-hidden bg-[#eeede9]">
+                <Image src={person.image} alt={person.name} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
               </div>
+              <h3 className="mt-4 text-lg">{person.name}</h3>
+              <p className="mt-1 text-sm text-ink/60">{person.role}</p>
             </div>
           ))}
         </div>
@@ -199,14 +200,40 @@ async function AboutPage() {
 
       <section className="shell pb-20">
         <div className="border-t border-black/10 pt-8">
-          <p className="text-[10px] uppercase tracking-[.2em] text-ink/45">A showcase of success</p>
-          <p className="mt-4 max-w-3xl text-2xl font-light leading-relaxed sm:text-3xl">
-            Recognised for the places we create and the standards we uphold.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            {['Realty Estate & Business Excellence Awards 2021', 'Realty Plus Conclave 2020 & 2021', 'Best Commercial Project 2018', 'Building Gujarat Awards 2018', 'Prop Realty Developer of the Year 2017'].map((award) => (
-              <span key={award} className="border border-black/10 px-4 py-3 text-xs text-ink/65">{award}</span>
-            ))}
+          <div className="mb-7 max-w-lg">
+            <h2 className="text-xl text-ink/70 sm:text-2xl">A Showcase Of Success</h2>
+            <p className="mt-3 text-sm leading-relaxed text-ink/60 sm:text-base">
+              Explore our collection of prestigious awards that reflect our dedication to our mission and values.
+            </p>
+          </div>
+          <div className="awards-marquee overflow-hidden" aria-label="Awards and recognition">
+            <div className="animate-awards-scroll flex w-max">
+              {[0, 1].map((copy) => (
+                <div key={copy} className="flex shrink-0 gap-3 pr-3" aria-hidden={copy === 1}>
+                  {[
+                    'Realty Estate & Business Excellence Awards 2021',
+                    'Realty Plus Conclave 2020',
+                    'Realty Plus Conclave 2021',
+                    'Realty Plus Conclave Best Commercial Project 2018',
+                    'Building Gujarat Awards 2018',
+                    'Prop Realty Developer of the Year 2017',
+                    'Times Man of the Year',
+                    'Divya Bhaskar The Luminary Awards',
+                    'Optimal Media Best Commercial Project of Ahmedabad 2018',
+                    'GIHED Credai Property Show 2018',
+                    'NAR Olympiad 2018',
+                  ].map((award) => (
+                    <article key={award} className="h-48 w-64 shrink-0 bg-[#fafafa] p-5 sm:h-52 sm:w-72 sm:p-6">
+                      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-9 w-9 fill-none stroke-ink/70" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M8 4h8v5a4 4 0 0 1-8 0V4ZM8 6H4v2a4 4 0 0 0 4 4m8-6h4v2a4 4 0 0 1-4 4m-4-1v6m-3 3h6m-8 2h10l-2-3h-6l-2 3Z" />
+                        <path d="m12 5 .8 1.6 1.8.3-1.3 1.2.3 1.8L12 9l-1.6.9.3-1.8-1.3-1.2 1.8-.3L12 5Z" />
+                      </svg>
+                      <p className="mt-5 text-sm leading-relaxed text-ink/75 sm:text-base">{award}</p>
+                    </article>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -220,7 +247,7 @@ async function TeamPage() {
     <PageFrame>
       <PageHero label="People of SHILP" title="Meet our team." description="A shared commitment to thoughtful development, strong relationships and places built to last." image={banner?.desktopImage} mobileImage={banner?.mobileImage} imageAlt={banner?.imageAlt} />
       <section className="shell py-16 sm:py-24">
-        <IntroHeading eyebrow="Leadership" title="Experience that shapes every detail." text="Meet the leadership team building the next chapter of SHILP Group." />
+        <IntroHeading eyebrow="Leadership" title="Experience that shapes every detail." text="Meet the leadership team building the next chapter of SHILP Group." titleClassName="text-[clamp(1.6rem,3.2vw,2.8rem)]" />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((person) => (
             <article key={person.name} className="group">
@@ -285,7 +312,7 @@ async function ProjectOverviewPage() {
         <div className="flex flex-col gap-4 border-b border-black/10 pb-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-[10px] uppercase tracking-[.2em] text-ink/45">{yearRange} · {items.length} projects</p>
-            <h2 className="mt-3 text-[clamp(2rem,4.5vw,4rem)] font-light tracking-[-.05em]">Places made over time.</h2>
+            <h2 className="mt-3 text-[clamp(1.6rem,3.5vw,3rem)] font-light tracking-[-.05em]">Places made over time.</h2>
           </div>
           <p className="max-w-md text-xs leading-relaxed text-ink/55">Explore our residential, commercial and plotted developments.</p>
         </div>
@@ -330,7 +357,7 @@ async function OurWorkPage() {
     <PageFrame>
       <PageHero label="Our work" title="Places that move the city forward." description="From homes to workplaces, our projects are shaped by the people, neighbourhoods and ambitions around them." image={banner?.desktopImage} mobileImage={banner?.mobileImage} imageAlt={banner?.imageAlt} />
       <section className="shell py-14 sm:py-20">
-        <IntroHeading eyebrow="What we do" title="Different places. One thoughtful approach." text="Every development begins with a clear understanding of its setting and the people it is designed to serve." />
+        <IntroHeading eyebrow="What we do" title="Different places. One thoughtful approach." text="Every development begins with a clear understanding of its setting and the people it is designed to serve." titleClassName="text-[clamp(1.6rem,3.2vw,2.8rem)]" />
         <div className="mt-10 space-y-8">
           {categories.map((category, index) => (
             <article key={category.name} className={`grid overflow-hidden bg-[#f3f2ee] lg:grid-cols-2 ${index % 2 ? 'lg:[&>div:first-child]:order-2' : ''}`}>
@@ -359,7 +386,7 @@ async function ContactPage() {
       <section className="shell grid gap-12 py-16 sm:py-24 lg:grid-cols-[.8fr_1.2fr]">
         <div>
           <p className="text-[10px] uppercase tracking-[.2em] text-ink/45">Visit or get in touch</p>
-          <h2 className="mt-5 text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.05] tracking-[-.045em]">Let&apos;s start a conversation.</h2>
+          <h2 className="mt-5 text-[clamp(1.6rem,3.2vw,2.8rem)] font-light leading-[1.05] tracking-[-.045em]">Let&apos;s start a conversation.</h2>
           <address className="mt-8 not-italic text-sm leading-relaxed text-ink/65">
             <strong className="font-medium text-ink">SHILP HOUSE</strong><br />
             Besides Rajpath Club, Rajpath Rangoli Road,<br />
@@ -376,11 +403,13 @@ async function ContactPage() {
             Get directions <ArrowMark />
           </a>
         </div>
-        <div className="bg-[#f3f2ee] p-6 sm:p-10">
-          <p className="text-[10px] uppercase tracking-[.2em] text-ink/45">Send an enquiry</p>
-          <h2 className="mt-4 text-2xl font-light tracking-[-.035em] sm:text-3xl">How can we help?</h2>
-          <p className="mt-3 text-xs leading-relaxed text-ink/55">Complete the form and your email app will open with your enquiry details.</p>
-          <EnquiryForm kind="contact" />
+        <div className=" p-px">
+          <div className="bg-[#f3f2ee] p-6 sm:p-10">
+            <p className="text-[10px] uppercase tracking-[.2em] text-ink/45">Send an enquiry</p>
+            <h2 className="mt-4 text-2xl font-light tracking-[-.035em] sm:text-3xl">How can we help?</h2>
+            <p className="mt-3 text-xs leading-relaxed text-ink/55">Complete the form and your email app will open with your enquiry details.</p>
+            <EnquiryForm kind="contact" />
+          </div>
         </div>
       </section>
       <section className="shell pb-16" aria-label="Find Shilp Group on the map">

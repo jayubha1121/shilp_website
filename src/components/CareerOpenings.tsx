@@ -41,7 +41,7 @@ export default function CareerOpenings({
     <section className="shell grid scroll-mt-8 gap-8 py-12 sm:py-16 lg:grid-cols-[.8fr_1.2fr]" id="career-openings">
       <div>
         <p className="text-[10px] uppercase tracking-[.2em] text-ink/45">Current openings</p>
-        <h2 className="mt-4 text-[clamp(2rem,3.5vw,3rem)] font-light leading-[1.05] tracking-[-.045em]">Find your next opportunity.</h2>
+        <h2 className="mt-4 text-[clamp(1.6rem,3vw,2.5rem)] font-light leading-[1.05] tracking-[-.045em]">Find your next opportunity.</h2>
         {available && openings.length > 0 && (
           <div className="mt-6 border-t border-black/10">
             {openings.map((opening, index) => (
@@ -67,11 +67,13 @@ export default function CareerOpenings({
         {!available && <p role="status" className="mt-8 border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">Current openings are temporarily unavailable. Please try again shortly.</p>}
         {available && openings.length === 0 && <p className="mt-8 border border-black/10 bg-[#f8f7f4] p-5 text-sm leading-relaxed text-ink/60">There are no open positions right now. Please check back later or send us your details using the form.</p>}
       </div>
-      <div className="scroll-mt-8 bg-[#f3f2ee] p-6 sm:p-8" id="career-application">
-        <p className="text-[10px] uppercase tracking-[.2em] text-ink/45">Apply to SHILP</p>
-        <h2 className="mt-3 text-2xl font-light tracking-[-.035em] sm:text-3xl">Tell us about yourself.</h2>
-        <p className="mt-3 text-xs leading-relaxed text-ink/55">Complete the form and your email app will open with your application details. Please attach your resume before sending.</p>
-        <EnquiryForm kind="career" positions={openings.map((opening) => opening.title)} selectedPosition={selectedPosition} />
+      <div className=" p-px">
+        <div className="scroll-mt-8 bg-[#f3f2ee] p-6 sm:p-8" id="career-application">
+          <p className="text-[10px] uppercase tracking-[.2em] text-ink/45">Apply to SHILP</p>
+          <h2 className="mt-3 text-2xl font-light tracking-[-.035em] sm:text-3xl">Tell us about yourself.</h2>
+          <p className="mt-3 text-xs leading-relaxed text-ink/55">Complete the form and your email app will open with your application details. Please attach your resume before sending.</p>
+          <EnquiryForm kind="career" positions={openings.map((opening) => opening.title)} selectedPosition={selectedPosition} />
+        </div>
       </div>
 
       {selectedOpening && (

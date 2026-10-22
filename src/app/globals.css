@@ -46,6 +46,21 @@ body {
   }
 }
 
+.animate-awards-scroll {
+  animation: awards-scroll 42s linear infinite;
+}
+
+.awards-marquee:hover .animate-awards-scroll,
+.awards-marquee:focus-within .animate-awards-scroll {
+  animation-play-state: paused;
+}
+
+@keyframes awards-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -53,6 +68,10 @@ body {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .animate-awards-scroll {
+    animation: none;
   }
 }
 
@@ -65,4 +84,3 @@ body {
   outline: 2px solid currentColor;
   outline-offset: 3px;
 }
-
