@@ -18,10 +18,10 @@ function ArrowMark() {
 }
 
 const team = [
-  { name: 'Yash Brahmbhatt', role: 'Founder and Chief Executive Officer', initials: 'YB' },
-  { name: 'Snehal Brahmbhatt', role: 'Director of Shilp Group', initials: 'SB' },
-  { name: 'Arpan Barot', role: 'Group General Manager', initials: 'AB' },
-  { name: 'Saumil Patel', role: 'General Manager - Sales', initials: 'SP' },
+  { name: 'Yash Brahmbhatt', role: 'Founder and Chief Executive Officer', image: '/images/team/yash-profile.png' },
+  { name: 'Snehal Brahmbhatt', role: 'Director of Shilp Group', image: '/images/team/snehal-profile.png' },
+  { name: 'Arpan Barot', role: 'Group General Manager', image: '/images/team/arpan-profile.png' },
+  { name: 'Saumil Patel', role: 'General Manager - Sales', image: '/images/team/saumil-profile.png' },
 ];
 
 function PageHero({
@@ -42,13 +42,10 @@ function PageHero({
   return (
     <section className="relative isolate h-[calc(100svh-4rem)] min-h-[34rem] overflow-hidden bg-[#28343b] text-white sm:h-[calc(100svh-4.5rem)] sm:min-h-0">
       <ResponsiveBannerImage desktopImage={image} mobileImage={mobileImage} alt={imageAlt} priority />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/15" />
-      <div className="shell relative z-10 flex h-full flex-col justify-end py-14 sm:py-20">
-        <p className="text-[10px] uppercase tracking-[.24em] text-white/75 sm:text-xs">{label}</p>
-        <h1 className="mt-4 max-w-4xl text-[clamp(2.8rem,7vw,6.5rem)] font-light leading-[.98] tracking-[-.055em]">
-          {title}
-        </h1>
-        <p className="mt-6 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base">{description}</p>
+      <div className="sr-only">
+        <p>{label}</p>
+        <h1>{title}</h1>
+        <p>{description}</p>
       </div>
     </section>
   );
@@ -135,7 +132,7 @@ async function AboutPage() {
 
       <section className="shell grid gap-12 py-16 sm:py-24 lg:grid-cols-2 lg:items-center">
         <div className="relative aspect-[4/3] overflow-hidden bg-[#e5e4df]">
-          <Image src="/images/about-tower.svg" alt="Architectural illustration of a Shilp tower" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+          <Image src="/images/image2.png" alt="Architectural illustration of a Shilp tower" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
         </div>
         <div>
           <p className="text-[10px] uppercase tracking-[.2em] text-ink/45">The SHILP belief</p>
@@ -188,13 +185,12 @@ async function AboutPage() {
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((person) => (
-            <div key={person.name} className="relative flex aspect-[4/4.5] flex-col justify-end overflow-hidden bg-[#eeede9] p-6">
-              <div className="absolute -right-8 -top-8 h-48 w-48 rounded-full border border-black/10" />
-              <div className="absolute -right-2 top-0 h-36 w-36 rounded-full border border-black/10" />
+            <div key={person.name} className="relative flex aspect-[4/4.5] flex-col justify-end overflow-hidden bg-[#eeede9] p-6 text-white">
+              <Image src={person.image} alt={person.name} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               <div className="relative">
-                <p className="text-4xl font-light tracking-[-.06em] text-ink/65">{person.initials}</p>
                 <h3 className="mt-5 text-lg">{person.name}</h3>
-                <p className="mt-1 text-xs text-ink/55">{person.role}</p>
+                <p className="mt-1 text-xs text-white/80">{person.role}</p>
               </div>
             </div>
           ))}
@@ -228,10 +224,9 @@ async function TeamPage() {
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((person) => (
             <article key={person.name} className="group">
-              <div className="relative flex aspect-[4/5] items-end overflow-hidden bg-[#eeede9] p-6">
-                <div className="absolute -right-10 -top-10 h-56 w-56 rounded-full border border-black/10 transition-transform duration-500 group-hover:scale-110" />
-                <div className="absolute -right-2 top-0 h-44 w-44 rounded-full border border-black/10" />
-                <span className="relative text-5xl font-light tracking-[-.06em] text-ink/65">{person.initials}</span>
+              <div className="relative flex aspect-[4/5] items-end overflow-hidden bg-[#eeede9] p-6 text-white">
+                <Image src={person.image} alt={person.name} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               </div>
               <h2 className="mt-5 text-lg">{person.name}</h2>
               <p className="mt-1 text-xs leading-relaxed text-ink/55">{person.role}</p>
@@ -247,7 +242,7 @@ async function TeamPage() {
             <p className="mt-5 text-sm leading-relaxed text-ink/65">A community of people bringing care, craft and collaboration to every project.</p>
           </div>
           <div className="relative aspect-[16/9] overflow-hidden bg-white">
-            <Image src="/images/image6.png" alt="A Shilp development and the team spirit behind it" fill className="object-cover" sizes="(max-width: 640px) 100vw, 65vw" />
+            <Image src="/images/shilpteam.webp" alt="A Shilp development and the team spirit behind it" fill className="object-cover" sizes="(max-width: 640px) 100vw, 65vw" />
           </div>
         </div>
       </section>
@@ -388,12 +383,25 @@ async function ContactPage() {
           <EnquiryForm kind="contact" />
         </div>
       </section>
-      <div className="shell pb-16">
-        <div className="relative aspect-[16/6] min-h-56 overflow-hidden bg-[#e5e4df]">
-          <Image src="/images/image1.png" alt="Shilp Group development in Ahmedabad" fill className="object-cover" sizes="100vw" />
-          <div className="absolute inset-0 bg-black/15" />
+      <section className="shell pb-16" aria-label="Find Shilp Group on the map">
+        <div className="relative aspect-[16/7] min-h-72 overflow-hidden bg-[#e5e4df] sm:min-h-[26rem]">
+          <iframe
+            title="Shilp Group location on Google Maps"
+            src="https://www.google.com/maps?output=embed&cid=11030215145385851353"
+            className="absolute inset-0 h-full w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+          <a
+            href="https://www.google.com/maps?cid=11030215145385851353&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF"
+            target="_blank"
+            rel="noreferrer"
+            className="absolute bottom-4 right-4 rounded-full bg-white px-5 py-3 text-xs font-medium text-ink shadow-lg transition-colors hover:bg-ink hover:text-white"
+          >
+            Open in Maps <span aria-hidden="true">↗</span>
+          </a>
         </div>
-      </div>
+      </section>
     </PageFrame>
   );
 }

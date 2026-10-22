@@ -14,12 +14,9 @@ export default function StoryBanner({ title, subtitle, image, imageAlt, banner }
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/25" />
-
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white">
-          <h2 className="banner-type uppercase">{title}</h2>
-          <p className="mt-4 max-w-[46ch] text-[9px] uppercase tracking-banner text-white/75 sm:text-[10px]">
-            {subtitle}
-          </p>
+        <div className="sr-only">
+          <h2>{title}</h2>
+          <p>{subtitle}</p>
         </div>
       </div>
     </section>
