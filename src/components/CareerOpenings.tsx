@@ -37,6 +37,8 @@ export default function CareerOpenings({
     }, 0);
   }
 
+
+  
   return (
     <section className="shell grid scroll-mt-8 gap-8 py-12 sm:py-16 lg:grid-cols-[.8fr_1.2fr]" id="career-openings">
       <div>
