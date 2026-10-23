@@ -78,7 +78,7 @@ export default function Header() {
                     aria-haspopup="true"
                     aria-expanded={openMenu === entry.label}
                     onClick={() => setOpenMenu(openMenu === entry.label ? null : entry.label)}
-                    className="flex items-center gap-2 border-0 bg-transparent p-0 text-[10px] uppercase text-ink/75 transition-colors duration-200 hover:text-ink"
+                    className="flex items-center gap-2 border-0 bg-transparent p-0 text-[12px] uppercase text-ink/75 transition-colors duration-200 hover:text-ink"
                   >
                     {entry.label}
                     <Arrow direction="down" className="h-2.5 w-2.5 opacity-70" />
@@ -90,7 +90,7 @@ export default function Header() {
                     rel={entry.href.startsWith('https://') ? 'noreferrer' : undefined}
                     aria-haspopup={hasChildren || undefined}
                     aria-expanded={hasChildren ? openMenu === entry.label : undefined}
-                    className="flex items-center gap-2 text-[10px] uppercase text-ink/75 transition-colors duration-200 hover:text-ink"
+                    className="flex items-center gap-2 text-[12px] uppercase text-ink/75 transition-colors duration-200 hover:text-ink"
                   >
                     {entry.label}
                     {hasChildren && <Arrow direction="down" className="h-2.5 w-2.5 opacity-70" />}
@@ -153,7 +153,7 @@ export default function Header() {
         <div className="flex items-center justify-self-end gap-4">
           <Link
             href={headerCta.href}
-            className="pill hidden text-ink/75 hover:bg-ink hover:text-white lg:inline-flex"
+            className="pill hidden text-[12px] text-ink/75 hover:bg-ink hover:text-white lg:inline-flex"
           >
             {headerCta.label}
           </Link>

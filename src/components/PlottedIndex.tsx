@@ -14,27 +14,27 @@ export default async function PlottedIndex() {
             {plotted.title}
           </SectionHeading>
 
-          <div className="mt-16 border-t border-hairline sm:mt-40">
+          <div className="mt-8 border-t border-hairline">
             {items.map((item) => (
               <IndexRow key={item.key} item={item} columns={[item.meta, item.size, item.typology]} />
             ))}
           </div>
         </div>
 
-        <div className="min-w-0 md:col-span-5">
-          <SectionHeading className="!text-[clamp(1.5rem,2.5vw,2.625rem)] !font-light !leading-none">
-            {plotted.featureTitle}
-          </SectionHeading>
-          <div className="relative mt-8 aspect-[664/566] w-full overflow-hidden bg-[#e5e4df] md:w-[90%]">
-            <Image
-              src={plotted.featureImage}
-              alt={plotted.featureImageAlt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover object-top"
-            />
-          </div>
-        </div>
+      <div className="min-w-0 lg:col-span-5">
+              <SectionHeading className="!text-[clamp(1.5rem,2.5vw,2.625rem)] !font-light !leading-none">
+                {plotted.featureTitle}
+              </SectionHeading>
+              <div className="relative mt-8 aspect-[663/567] w-full overflow-hidden">
+                <Image
+                  src={plotted.featureImage}
+                  alt={plotted.featureImageAlt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
       </div>
     </section>
   );
