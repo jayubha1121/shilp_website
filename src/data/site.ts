@@ -57,11 +57,11 @@ export const footer: Footer = {
   email: 'sales@shilp.co.in | saumil@shilp.co.in',
   website: '',
   socials: [
-    { label: 'Facebook', href: 'https://facebook.com' },
-    { label: 'Instagram', href: 'https://instagram.com' },
-    { label: 'Youtube', href: 'https://youtube.com' },
-    { label: 'LinkedIn', href: 'https://linkedin.com' },
-    { label: 'X', href: 'https://x.com' },
+    { label: 'Facebook', href: 'https://www.facebook.com/ShilpGroup/' },
+    { label: 'Instagram', href: 'https://www.instagram.com/shilpgroup/' },
+    { label: 'Youtube', href: 'https://www.youtube.com/channel/UCl4AhLyffIpnKCwyCPwkBNQ' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/shilpgroup/posts/?feedView=all' },
+    { label: 'X', href: 'https://x.com/GroupShilp' },
   ],
   legal: [
     { label: 'Terms of Use', href: '/terms' },
