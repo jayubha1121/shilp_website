@@ -31,6 +31,20 @@ const backendUrl = process.env.BACKEND_URL || (process.env.VERCEL
   ? 'https://shilp-backend-dusky.vercel.app'
   : 'http://localhost:8081');
 
+function displayProjectState(...states: Array<string | undefined>) {
+  const state = states.find(Boolean) || '';
+  return state === 'On-going' ? 'Under Construction' : state;
+}
+
+function displayProjectCategory(category: ApiProject['typeOfProject']) {
+  const labels: Record<ApiProject['typeOfProject'], string> = {
+    commercial: 'Commercial Development',
+    residential: 'Residential Development',
+    plotted: 'Plotted Development',
+  };
+  return labels[category];
+}
+
 export async function getFeaturedProject(): Promise<ApiProject | null> {
   try {
     const response = await fetch(`${backendUrl}/api/projects?limit=1`, { cache: 'no-store' });
@@ -70,11 +84,13 @@ export async function getLiveProjectItems(
       name: project.projectDetail.title,
       meta: project.projectDetail.shortAddress || project.location.city,
       typology: project.typeOfProject === 'residential'
-        ? project.typology || project.projectDetail.projectWorkStatus
-        : project.projectDetail.projectWorkStatus,
+        ? project.typology || displayProjectState(project.projectDetail.projectWorkStatus, project.projectState)
+        : displayProjectState(project.projectDetail.projectWorkStatus, project.projectState),
       year: project.year,
       href: `/projects/${project.slug}`,
-      ...(project.typeOfProject === 'residential' ? { status: project.projectDetail.projectStatus } : {}),
+      ...(project.typeOfProject === 'residential'
+        ? { status: displayProjectState(project.projectDetail.projectStatus, project.projectState) }
+        : {}),
       ...(project.typeOfProject === 'plotted' ? { size: project.plotSize } : {}),
     }));
   } catch {
@@ -87,7 +103,8 @@ export async function getLiveProjectDetail(slug: string): Promise<ProjectDetail 
   if (!result.available || result.archived) return null;
   const project = result.project;
   if (!project) return null;
-  const category = project.typeOfProject[0].toUpperCase() + project.typeOfProject.slice(1);
+  const category = displayProjectCategory(project.typeOfProject);
+  const projectState = displayProjectState(project.projectState, project.projectDetail.projectWorkStatus, project.projectDetail.projectStatus);
   const heroImage = project.banner.banner;
   const aboutImage = project.aboutUs.image;
   const location = [project.location.address1, project.location.address2, project.location.city, project.location.state]
@@ -100,8 +117,8 @@ export async function getLiveProjectDetail(slug: string): Promise<ProjectDetail 
     name: project.projectDetail.title,
     category,
     location,
-    status: project.projectState || project.projectDetail.projectWorkStatus || project.projectDetail.projectStatus,
-    projectState: project.projectState || project.projectDetail.projectWorkStatus || project.projectDetail.projectStatus,
+    status: projectState,
+    projectState,
     statusPercentage: project.statusPercentage || 0,
     year: project.year,
     heroImage,
@@ -113,7 +130,7 @@ export async function getLiveProjectDetail(slug: string): Promise<ProjectDetail 
     amenitiesImageAlt: `${project.projectDetail.title} amenities`,
     youtubeUrl: project.projectVideo.videoUrl || 'https://www.youtube.com/',
     brochureUrl: project.projectDetail.brochure,
-    intro: paragraphs[0] || `${project.projectDetail.title} is a ${project.typeOfProject} development in ${location}.`,
+    intro: paragraphs[0] || `${project.projectDetail.title} is a ${category.toLowerCase()} in ${location}.`,
     description: paragraphs.slice(1).join('\n\n'),
     area: project.projectDetail.shortAddress,
     configuration: project.typology || project.projectDetail.projectStatus,

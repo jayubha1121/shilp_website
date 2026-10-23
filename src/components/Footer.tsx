@@ -7,15 +7,15 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#000000E5] pb-6 pt-28 text-white">
-      <div className="shell px-10">
+      <div className="shell">
         <Wordmark size="sm" variant="white" className="w-64 leading-none" />
 
-        <div className="mt-10 grid gap-8 sm:grid-cols-[1.2fr_1.2fr_.7fr_1fr] sm:gap-x-8">
-          <p className="max-w-[34ch] text-[13px] leading-relaxed text-white/55">
+        <div className="mt-10 grid gap-8 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-[1.2fr_1.2fr_.7fr_1fr]">
+          <p className="max-w-[34ch] text-left text-[13px] leading-relaxed text-white/55">
             {footer.blurb}
           </p>
 
-          <address className="max-w-[32ch] not-italic text-[13px] leading-relaxed text-white/55">
+          <address className="max-w-[32ch] text-left not-italic text-[13px] leading-relaxed text-white/55">
             {footer.address.title}, {footer.address.lines.join(' ')}
           </address>
 
@@ -27,7 +27,7 @@ export default function Footer() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="whitespace-nowrap text-[13px] text-white/55 transition-colors duration-200 hover:text-white"
+                        className="text-[13px] text-white/55 transition-colors duration-200 hover:text-white"
                       >
                         {link.label}
                       </Link>
@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-28 grid gap-6 border-b border-white/10 pb-3 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+        <div className="mt-20 grid gap-6 border-b border-white/10 pb-3 sm:grid-cols-2 sm:items-center lg:mt-28 lg:grid-cols-[1fr_auto_1fr]">
           <div className="flex flex-wrap items-center gap-2 text-[13px] text-white/55">
             {footer.phones.map((phone, i) => (
               <span key={phone} className="flex items-center gap-2">
@@ -51,7 +51,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-2 text-[13px] text-white/55">
+          <div className="flex flex-wrap items-center gap-2 text-[13px] text-white/55 sm:justify-end lg:justify-center">
             {emails.map((email, i) => (
               <span key={email} className="flex items-center gap-2">
                 <a href={`mailto:${email}`} className="hover:text-white">
@@ -62,7 +62,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 sm:justify-end">
+          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 sm:col-span-2 lg:col-span-1 lg:justify-end">
             {footer.socials.map((social) => (
               <li key={social.label}>
                 <a

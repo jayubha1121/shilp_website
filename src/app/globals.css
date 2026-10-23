@@ -38,12 +38,40 @@ body {
   }
 
   .pill {
-    @apply inline-flex items-center gap-3 rounded-full border border-current px-5 py-2.5 text-[10px] uppercase tracking-micro transition-colors duration-200;
+    @apply inline-flex items-center gap-3 border border-current px-5 py-2.5 text-[10px] uppercase transition-colors duration-200;
   }
 
   .banner-type {
-    @apply text-[clamp(1.2rem,3.4vw,2.6rem)] font-light tracking-banner;
+    @apply text-[clamp(1.2rem,3.4vw,2.6rem)] font-light;
   }
+}
+
+.team-flip-card {
+  perspective: 1000px;
+}
+
+.team-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 700ms;
+}
+
+.team-flip-card:hover .team-flip-inner,
+.team-flip-card:focus .team-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.team-flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.team-flip-back {
+  transform: rotateY(180deg);
 }
 
 .animate-awards-scroll {

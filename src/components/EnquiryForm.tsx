@@ -30,11 +30,11 @@ export default function EnquiryForm({ kind, positions = [], selectedPosition = '
     window.location.href = `mailto:sales@shilp.co.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
-  const inputClass = `mt-2 w-full border-0 border-b border-black/20 bg-transparent px-0 ${isCareer ? 'py-2' : 'py-3'} text-sm outline-none placeholder:text-ink/35 focus:border-black`;
+  const inputClass = 'mt-2 w-full border-0 border-b border-black/20 bg-transparent px-0 py-3 text-sm outline-none placeholder:text-ink/35 focus:border-black';
   const labelClass = 'block text-xs text-ink/60';
 
   return (
-    <form onSubmit={handleSubmit} className={isCareer ? 'mt-6 grid gap-x-6 gap-y-4 sm:grid-cols-2' : 'mt-7 space-y-5'}>
+    <form onSubmit={handleSubmit} className={isCareer ? 'mt-7 grid gap-x-6 gap-y-5 sm:grid-cols-2' : 'mt-7 space-y-5'}>
       <label className={`${labelClass} ${isCareer ? 'sm:col-span-2' : ''}`}>
         Your name
         <input className={inputClass} name="Name" autoComplete="name" required placeholder="Full name" />
@@ -61,7 +61,7 @@ export default function EnquiryForm({ kind, positions = [], selectedPosition = '
           </label>
           <label className={labelClass}>
             Upload resume
-            <input className="mt-3 block w-full text-xs text-ink/60 file:mr-4 file:border-0 file:bg-white file:px-4 file:py-2 file:text-xs" name="resume" type="file" accept=".pdf,.doc,.docx" />
+          <input className="mt-2 block w-full border-0 border-b border-black/20 bg-transparent px-0 py-3 text-xs text-ink/60 file:mr-3 file:border-0 file:bg-[#e9e8e4] file:px-3 file:py-1.5 file:text-xs" name="resume" type="file" accept=".pdf,.doc,.docx" />
           </label>
         </>
       ) : (
@@ -75,7 +75,7 @@ export default function EnquiryForm({ kind, positions = [], selectedPosition = '
       )}
       <label className={labelClass}>
         {isCareer ? 'Your message' : 'Your message / additional requirements'}
-        <textarea className={`${inputClass} min-h-24 resize-y`} name="Message" rows={3} placeholder="Write a message" />
+        <textarea className={`${inputClass} min-h-20 resize-y`} name="Message" rows={3} placeholder="Write a message" />
       </label>
       {isCareer && (
         <label className="flex items-start gap-3 text-xs leading-relaxed text-ink/60 sm:col-span-2">
@@ -83,7 +83,7 @@ export default function EnquiryForm({ kind, positions = [], selectedPosition = '
           I agree that the information I submit may be used to respond to my application.
         </label>
       )}
-      <button type="submit" className={`pill border-ink bg-ink text-white hover:bg-transparent hover:text-ink ${isCareer ? 'w-fit' : ''}`}>
+      <button type="submit" className="pill border-ink bg-ink text-white hover:bg-transparent hover:text-ink">
         {isCareer ? 'Send application' : 'Send enquiry'}
         <span aria-hidden="true" className="text-base leading-none">↗</span>
       </button>

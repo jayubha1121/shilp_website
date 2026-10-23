@@ -14,18 +14,18 @@ export const about: About = {
 
 export const stats: Stat[] = [
   {
-    value: '22+',
-    label: 'Years of experience',
-    note: 'More than two decades of thoughtful real estate development in Ahmedabad.',
+    value: '8000+',
+    label: 'Days of experience | Two decades',
+    note: 'Shilp group, a real estate company in Ahmedabad that is driven by quality, integrity.',
   },
   {
-    value: '20M+',
-    label: 'Square feet developed',
-    note: 'Residential, commercial and plotted developments across Ahmedabad and GIFT City.',
+    value: '20,000,000+',
+    label: '20 million sq. ft. | Across 450+ acres',
+    note: 'Shilp group, a real estate company in Ahmedabad that is driven by quality, integrity.',
   },
   {
-    value: '55+',
-    label: 'Landmark projects delivered',
-    note: 'Places that support lives, businesses and communities across the region.',
+    value: '55+ Places',
+    label: 'Residential and commercial properties',
+    note: 'Shilp group, a real estate company in Ahmedabad that is driven by quality, integrity.',
   },
 ];

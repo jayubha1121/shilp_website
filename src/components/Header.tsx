@@ -17,9 +17,9 @@ interface HeaderProject {
 }
 
 const projectCategories: { type: ProjectCategory; label: string }[] = [
-  { type: 'commercial', label: 'Commercial' },
-  { type: 'residential', label: 'Residential' },
-  { type: 'plotted', label: 'Plotted' },
+  { type: 'commercial', label: 'Commercial Development' },
+  { type: 'residential', label: 'Residential Development' },
+  { type: 'plotted', label: 'Plotted Development' },
 ];
 
 export default function Header() {
@@ -60,7 +60,7 @@ export default function Header() {
           <Wordmark />
         </Link>
 
-        <nav className="hidden items-center gap-14 md:flex xl:gap-20">
+        <nav className="hidden items-center gap-4 md:flex lg:gap-8 xl:gap-14">
           {primaryNav.map((entry) => {
             const isProjects = entry.label === 'Projects';
             const hasChildren = entry.children.length > 0 || isProjects;
@@ -78,7 +78,7 @@ export default function Header() {
                     aria-haspopup="true"
                     aria-expanded={openMenu === entry.label}
                     onClick={() => setOpenMenu(openMenu === entry.label ? null : entry.label)}
-                    className="flex items-center gap-2 border-0 bg-transparent p-0 text-[10px] uppercase tracking-micro text-ink/75 transition-colors duration-200 hover:text-ink"
+                    className="flex items-center gap-2 border-0 bg-transparent p-0 text-[10px] uppercase text-ink/75 transition-colors duration-200 hover:text-ink"
                   >
                     {entry.label}
                     <Arrow direction="down" className="h-2.5 w-2.5 opacity-70" />
@@ -90,7 +90,7 @@ export default function Header() {
                     rel={entry.href.startsWith('https://') ? 'noreferrer' : undefined}
                     aria-haspopup={hasChildren || undefined}
                     aria-expanded={hasChildren ? openMenu === entry.label : undefined}
-                    className="flex items-center gap-2 text-[10px] uppercase tracking-micro text-ink/75 transition-colors duration-200 hover:text-ink"
+                    className="flex items-center gap-2 text-[10px] uppercase text-ink/75 transition-colors duration-200 hover:text-ink"
                   >
                     {entry.label}
                     {hasChildren && <Arrow direction="down" className="h-2.5 w-2.5 opacity-70" />}
@@ -104,16 +104,16 @@ export default function Header() {
                         const categoryProjects = projects.filter((project) => project.typeOfProject === category.type);
                         return (
                           <section key={category.type}>
-                            <h2 className="mb-3 text-[9px] uppercase tracking-micro text-ink/45">{category.label}</h2>
+                            <h2 className="mb-3 text-[9px] uppercase text-ink/45">{category.label}</h2>
                             {categoryProjects.map((project) => (
                               <Link
                                 key={project.id}
                                 href={`/projects/${project.slug}`}
                                 onClick={() => setOpenMenu(null)}
-                                className="block border-b border-black/10 py-2.5 text-[10px] uppercase tracking-micro text-ink/75 last:border-b-0 hover:text-ink"
+                                className="block border-b border-black/10 py-2.5 text-[10px] uppercase text-ink/75 last:border-b-0 hover:text-ink"
                               >
                                 <span className="block">{project.projectDetail.title}</span>
-                                <span className="mt-1 block text-[9px] normal-case tracking-normal text-ink/45">
+                                <span className="mt-1 block text-[9px] normal-case text-ink/45">
                                   {project.projectDetail.shortAddress || project.location.city}
                                 </span>
                               </Link>
@@ -136,10 +136,10 @@ export default function Header() {
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="flex items-center justify-between border-b border-black/10 py-3 text-[10px] uppercase tracking-micro text-ink/70 last:border-b-0 hover:text-ink"
+                          className="flex items-center justify-between border-b border-black/10 py-3 text-[10px] uppercase text-ink/70 last:border-b-0 hover:text-ink"
                         >
                           {child.label}
-                          <Arrow className="-rotate-45 opacity-60" />
+                          <Arrow direction="up-right" className="opacity-60" />
                         </Link>
                       ))}
                     </div>
@@ -153,7 +153,7 @@ export default function Header() {
         <div className="flex items-center justify-self-end gap-4">
           <Link
             href={headerCta.href}
-            className="pill hidden text-ink/75 hover:bg-ink hover:text-white sm:inline-flex"
+            className="pill hidden text-ink/75 hover:bg-ink hover:text-white lg:inline-flex"
           >
             {headerCta.label}
           </Link>
@@ -182,7 +182,7 @@ export default function Header() {
                     type="button"
                     aria-expanded={mobileProjectsOpen}
                     onClick={() => setMobileProjectsOpen((open) => !open)}
-                    className="flex w-full items-center justify-between border-0 bg-transparent py-3 text-left text-[11px] uppercase tracking-micro text-ink"
+                    className="flex w-full items-center justify-between border-0 bg-transparent py-3 text-left text-[11px] uppercase text-ink"
                   >
                     {entry.label}<Arrow direction="down" className="h-3 w-3" />
                   </button>
@@ -191,7 +191,7 @@ export default function Header() {
                     href={entry.href}
                     target={entry.href.startsWith('https://') ? '_blank' : undefined}
                     rel={entry.href.startsWith('https://') ? 'noreferrer' : undefined}
-                    className="block py-3 text-[11px] uppercase tracking-micro text-ink"
+                    className="block py-3 text-[11px] uppercase text-ink"
                   >
                     {entry.label}
                   </Link>
@@ -200,13 +200,13 @@ export default function Header() {
                   <div className="grid grid-cols-1 gap-4 pb-4 pl-4">
                     {projectCategories.map((category) => (
                       <section key={category.type}>
-                        <h2 className="mb-2 text-[9px] uppercase tracking-micro text-ink/45">{category.label}</h2>
+                        <h2 className="mb-2 text-[9px] uppercase text-ink/45">{category.label}</h2>
                         {projects.filter((project) => project.typeOfProject === category.type).map((project) => (
                           <Link
                             key={project.id}
                             href={`/projects/${project.slug}`}
                             onClick={() => { setMobileOpen(false); setMobileProjectsOpen(false); }}
-                            className="block py-2 text-[10px] uppercase tracking-micro text-ink/70"
+                            className="block py-2 text-[10px] uppercase text-ink/70"
                           >
                             {project.projectDetail.title}
                           </Link>
@@ -221,7 +221,7 @@ export default function Header() {
                   <Link
                     key={child.label}
                     href={child.href}
-                    className="block py-2 pl-5 text-[10px] uppercase tracking-micro text-ink/60"
+                    className="block py-2 pl-5 text-[10px] uppercase text-ink/60"
                   >
                     {child.label}
                   </Link>

@@ -81,28 +81,41 @@ export function ProjectDetail({ project }: { project: ProjectDetailData }) {
           <div className="shell">
           <div className="grid grid-cols-[1fr_1fr_1fr] items-start gap-8 text-[clamp(.875rem,1vw,1.2rem)] leading-[1.4] text-[#2b2b2b] max-lg:grid-cols-1 max-lg:gap-6">
             <span className="text-[clamp(1.125rem,1.5vw,1.8rem)] uppercase">{project.name}</span>
-            <div className="uppercase">
-              <p className="m-0">{project.category} | {project.projectState} Project | Progress: {project.statusPercentage}%</p>
-              <div className="mt-8 flex gap-6 text-[.9em] max-md:mt-4">
-                <Link href="#floor-plans">Inquiry</Link>
-                {project.brochureUrl && <a href={project.brochureUrl} target="_blank" rel="noreferrer">Download</a>}
-              </div>
+            <div className="space-y-1.5 uppercase">
+              <p className="m-0">{project.category}</p>
+              <p className="m-0">{project.projectState === 'Under Construction' ? project.projectState : `${project.projectState} Project`}</p>
+              <p className="m-0">Progress: {project.statusPercentage}%</p>
             </div>
-            <div className="max-w-[34rem]">
+            <div className="flex max-w-[34rem] flex-col">
               <p className="m-0">{project.locationDescription || project.location}</p>
-              {project.mapUrl && <a href={project.mapUrl} target="_blank" rel="noreferrer" className="mt-7 inline-flex border border-[#777] px-4 py-2 text-[.72em] uppercase tracking-[.18em] transition-colors hover:bg-[#2b2b2b] hover:text-white max-md:mt-4">
+              {project.mapUrl && <a href={project.mapUrl} target="_blank" rel="noreferrer" className="mt-7 ml-auto inline-flex border border-[#777] px-4 py-2 text-[.72em] uppercase tracking-[.18em] transition-colors hover:bg-[#2b2b2b] hover:text-white max-md:mt-4">
                 View in map <span className="ml-3" aria-hidden="true">↗</span>
               </a>}
             </div>
           </div>
-          <div className="mt-[7.8rem] grid items-start gap-10 lg:grid-cols-[1fr_1.15fr_.85fr] max-lg:mt-16 max-lg:grid-cols-1 max-lg:gap-8">
-            <h1 className="m-0 text-[clamp(2rem,3.6vw,3.75rem)] font-light leading-[.98]">About<br />Project</h1>
-            <div>
-              <p className="m-0 max-w-[506px] text-justify text-[clamp(.9rem,1.12vw,1.25rem)] leading-[1.38] text-[#171717]">{project.intro}</p>
-              {project.description.split('\n\n').map((paragraph) => <p key={paragraph} className="mt-7 mb-0 max-w-[506px] text-justify text-[clamp(.9rem,1.12vw,1.25rem)] leading-[1.38] text-[#303030]">{paragraph}</p>)}
-              {project.brochureUrl && <a className="mt-7 inline-block border-b border-[#222] pb-1.5 text-[clamp(.7rem,.8vw,.95rem)] uppercase tracking-[.12em]" href={project.brochureUrl} target="_blank" rel="noreferrer">Download brochure <span className="ml-3.5">↗</span></a>}
+          <div className="mt-[7.8rem] grid items-stretch gap-10 lg:grid-cols-[1.15fr_.85fr] lg:gap-14 max-lg:mt-16 max-lg:grid-cols-1 max-lg:gap-8">
+            <div className="flex h-full flex-col text-[clamp(.9rem,1.12vw,1.25rem)] leading-[1.38]">
+              <div>
+                <p className="m-0 text-justify text-[#171717]">{project.intro}</p>
+                {project.description.split('\n\n').map((paragraph) => <p key={paragraph} className="mt-10 mb-0 text-justify text-[#303030]">{paragraph}</p>)}
+              </div>
+              <div className="mt-auto flex flex-wrap items-center gap-x-10 gap-y-4 pt-7 text-[clamp(.7rem,.8vw,.95rem)] uppercase tracking-[.12em]">
+                <Link className="w-fit border-b border-[#222] pb-1.5" href="#floor-plans">Inquiry</Link>
+                {project.brochureUrl && <a className="w-fit border-b border-[#222] pb-1.5" href={project.brochureUrl} target="_blank" rel="noreferrer">Download brochure <span className="ml-3.5">↗</span></a>}
+              </div>
             </div>
-            {project.aboutImage && <Image src={project.aboutImage} alt={project.aboutImageAlt} width={506} height={577} unoptimized className="aspect-[506/577] h-auto w-full object-contain" />}
+            {project.aboutImage && (
+              <div className="relative mt-0 aspect-[1.2/1] w-full self-start overflow-hidden">
+                <Image
+                  src={project.aboutImage}
+                  alt={project.aboutImageAlt}
+                  fill
+                  unoptimized
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                />
+              </div>
+            )}
           </div>
           </div>
         </section>

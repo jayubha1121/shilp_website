@@ -10,6 +10,7 @@ const ROTATION: Record<ArrowDirection, string> = {
   left: 'rotate-180',
   up: '-rotate-90',
   down: 'rotate-90',
+  'up-right': '-rotate-45',
 };
 
 export default function Arrow({ direction = 'right', className = '' }: ArrowProps) {

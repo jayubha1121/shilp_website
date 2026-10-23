@@ -21,17 +21,12 @@ const config: Config = {
       fontFamily: {
         sans: ['Manrope', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
-      letterSpacing: {
-        wordmark: '0.42em',
-        banner: '0.32em',
-        micro: '0.14em',
-      },
       maxWidth: {
         shell: '1440px',
       },
       fontSize: {
-        display: ['clamp(2.6rem, 6.2vw, 5.6rem)', { lineHeight: '1.02', letterSpacing: '-0.01em' }],
-        section: ['clamp(1.7rem, 3.2vw, 2.9rem)', { lineHeight: '1.16', letterSpacing: '-0.01em' }],
+        display: ['clamp(2.6rem, 6.2vw, 5.6rem)', { lineHeight: '1.02' }],
+        section: ['clamp(1.7rem, 3.2vw, 2.9rem)', { lineHeight: '1.16' }],
         figure: ['clamp(1.9rem, 4vw, 3.1rem)', { lineHeight: '1.05' }],
       },
     },

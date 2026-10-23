@@ -15,10 +15,10 @@ export default function StoryBanner({ title, subtitle, image, imageAlt, banner }
         />
         <div className="absolute inset-0 bg-black/25" />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
-          <h2 className="text-[clamp(1.7rem,7vw,3.5rem)] font-extralight uppercase leading-none tracking-[.2em]">
+          <h2 className="text-section font-extralight uppercase">
             {title}
           </h2>
-          <p className="mt-5 max-w-full border border-white/70 px-3 py-2 text-[9px] uppercase tracking-[.18em] sm:mt-6 sm:px-4 sm:text-xs">
+          <p className="mt-5 max-w-full border border-white/70 px-3 py-2 text-[9px] uppercase sm:mt-6 sm:px-4 sm:text-xs">
             {subtitle}
           </p>
         </div>

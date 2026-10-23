@@ -183,4 +183,4 @@ export interface TestimonialsSection {
   items: Testimonial[];
 }
 
-export type ArrowDirection = 'left' | 'right' | 'up' | 'down';
+export type ArrowDirection = 'left' | 'right' | 'up' | 'down' | 'up-right';

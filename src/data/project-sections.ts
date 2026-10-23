@@ -2,7 +2,7 @@ import type { CommercialSection, PlottedSection, ResidentialSection } from '@/ty
 
 export const commercial: CommercialSection = {
   eyebrow: 'Making Places For Families, Businesses And Beyond Today',
-  cta: { label: 'Explore investments, opportunities, business', href: '/projects/commercial' },
+  cta: { label: 'DISCUSS INVESTMENTS , OPPORTUNITIES, BUSINESS', href: '/projects/commercial' },
   banner: '/images/image2.png',
   bannerAlt: 'A boardroom in a glass-walled commercial tower',
   listTitle: 'Commercial Paradigms',

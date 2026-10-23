@@ -15,11 +15,11 @@ export default function IndexRow({ item, columns = [] }: IndexRowProps) {
   return (
     <Link
       href={item.href}
-      className={`index-row ${rowVariant} group text-[16px] text-slate transition-colors duration-200 hover:text-ink`}
+      className={`index-row ${rowVariant} group text-left text-[16px] text-slate transition-colors duration-200 hover:text-ink`}
     >
-      <span className="truncate text-[14px] tracking-micro">{item.displayKey || item.key}</span>
+      <span className="truncate text-[14px]">{item.displayKey || item.key}</span>
 
-      <span className="truncate text-[20px] uppercase tracking-micro text-ink sm:text-[22px]">
+      <span className="truncate text-[20px] uppercase text-ink sm:text-[22px]">
         {displayName}
       </span>
 
@@ -31,7 +31,7 @@ export default function IndexRow({ item, columns = [] }: IndexRowProps) {
 
       <span className="hidden text-right sm:block">{item.year}</span>
 
-      <Arrow className="justify-self-end -rotate-45 opacity-50 transition-opacity duration-200 group-hover:opacity-100" />
+      <Arrow direction="up-right" className="justify-self-end opacity-50 transition-opacity duration-200 group-hover:opacity-100" />
     </Link>
   );
 }
