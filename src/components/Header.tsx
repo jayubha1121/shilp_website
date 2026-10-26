@@ -155,7 +155,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => openEnquiry()}
-            className="pill text-[11px] text-ink/75 hover:bg-ink hover:text-white sm:text-[12px]"
+            className="pill hidden text-[11px] text-ink/75 hover:bg-ink hover:text-white md:inline-flex sm:text-[12px]"
           >
             Enquiry Now
           </button>
