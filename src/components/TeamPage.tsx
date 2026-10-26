@@ -1,12 +1,12 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import TeamLeadership from '@/components/TeamLeadership';
 import {
   ArrowMark,
   IntroHeading,
   PageFrame,
   PageHero,
-  team,
 } from '@/components/CompanyPageShared';
 import { getLivePageBanner } from '@/lib/live-page-banners';
 
@@ -88,31 +88,7 @@ export default async function TeamPage() {
           titleClassName="text-[clamp(1.6rem,3.2vw,2.8rem)]"
         />
 
-        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((person) => (
-            <article key={person.name} className="group">
-              <div className="relative aspect-[4/5] overflow-hidden bg-[#eeede9]">
-                <Image
-                  src={person.image}
-                  alt={person.name}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
-              </div>
-
-              <h2 className="mt-5 text-lg font-normal tracking-tight">
-                {person.name}
-              </h2>
-
-              <p className="mt-1 text-sm leading-relaxed text-ink/55">
-                {person.role}
-              </p>
-            </article>
-          ))}
-        </div>
+        <TeamLeadership />
       </section>
 
       {/* Team story and image collage */}

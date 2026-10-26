@@ -1,8 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowMark, IntroHeading, PageFrame, PageHero, team } from '@/components/CompanyPageShared';
+import { ArrowMark, IntroHeading, PageFrame, PageHero } from '@/components/CompanyPageShared';
+import AboutReadMore from '@/components/AboutReadMore';
+import TeamLeadership from '@/components/TeamLeadership';
 import { getLivePageBanner } from '@/lib/live-page-banners';
 import { stats } from '@data/about';
+
+const aboutParagraphs = [
+  'SHILP Group is an Ahmedabad-based real estate developer creating thoughtfully designed residential, commercial and plotted developments across Ahmedabad and GIFT City. Founded in 2004 by Mr Yash Brahmbhatt, SHILP has grown from its early beginnings with a small land acquisition in real estate development into a recognised name among top builders and real estate developers in Ahmedabad. We have developed 20 million+ square feet and delivered over 55 landmark projects across the city, shaping Ahmedabad’s skyline with a portfolio defined by distinctive architecture. We were the first to develop projects on Sindhu Bhavan Road, now a prime location, and continue to pioneer strategic real estate developments.',
+  'For us, development is not merely about constructing buildings. For decades, SHILP has followed a clear philosophy centred on quality, trust and thoughtful development. We are known for identifying upcoming areas and creating modern, dynamic structures that meet market needs. Each project builds on this foundation, creating spaces that remain relevant across generations.',
+  'At the heart of SHILP is a simple belief: Place Matter because People Matter. Real estate development goes beyond constructing buildings; it is about creating place that support lives, enable businesses, strengthen communities and contribute meaningfully to the city. Guided by craftsmanship, responsibility, trust and thoughtful development, we strive to create spaces that remain relevant and valuable long after construction ends.',
+  'SHILP is building more than real estate in Ahmedabad. We are creating place that matter.',
+];
 
 export default async function AboutPage() {
   const banner = await getLivePageBanner('about-us');
@@ -24,29 +33,8 @@ export default async function AboutPage() {
           </h2>
         </div>
         <div className="text-sm leading-[1.65] text-ink/65">
-          <div className="space-y-4">
-            <p>
-              SHILP Group is an Ahmedabad-based real estate developer creating thoughtfully designed residential, commercial and plotted developments across Ahmedabad and GIFT City. Founded in 2004 by Mr Yash Brahmbhatt, SHILP has grown from its early beginnings with a small land acquisition in real estate development into a recognised name among top builders and real estate developers in Ahmedabad. We have developed 20 million+ square feet and delivered over 55 landmark projects across the city, shaping Ahmedabad’s skyline with a portfolio defined by distinctive architecture. We were the first to develop projects on Sindhu Bhavan Road, now a prime location, and continue to pioneer strategic real estate developments.
-            </p>
-            <p>
-              For us, development is not merely about constructing buildings. For decades, SHILP has followed a clear philosophy centred on quality, trust and thoughtful development. We are known for identifying upcoming areas and creating modern, dynamic structures that meet market needs. Each project builds on this foundation, creating spaces that remain relevant across generations.
-            </p>
-            <details className="group">
-              <summary className="w-fit cursor-pointer list-inside text-sm text-ink underline underline-offset-4">
-                <span className="group-open:hidden">Read more</span>
-                <span className="hidden group-open:inline">Read less</span>
-              </summary>
-              <div className="mt-4 space-y-4">
-                <p>
-                  At the heart of SHILP is a simple belief: Place Matter because People Matter. Real estate development goes beyond constructing buildings; it is about creating place that support lives, enable businesses, strengthen communities and contribute meaningfully to the city. Guided by craftsmanship, responsibility, trust and thoughtful development, we strive to create spaces that remain relevant and valuable long after construction ends.
-                </p>
-                <p>SHILP is building more than real estate in Ahmedabad. We are creating place that matter.</p>
-              </div>
-            </details>
-          </div>
-          <Link href="/our-work" className="pill mt-6 text-ink hover:bg-ink hover:text-white">
-            Discover our work <ArrowMark />
-          </Link>
+          <AboutReadMore paragraphs={aboutParagraphs} />
+         
         </div>
       </section>
 
@@ -148,6 +136,7 @@ export default async function AboutPage() {
             title="Built with purpose. Grounded in trust."
             text="A long-term commitment to creating places that remain relevant and valuable long after they are built."
             titleClassName="text-[clamp(1.5rem,3vw,2.8rem)]"
+            textClassName="text-white"
             centered
           />
           <div className="mt-8 grid gap-7 sm:grid-cols-2">
@@ -178,17 +167,7 @@ export default async function AboutPage() {
             View the team <ArrowMark />
           </Link>
         </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((person) => (
-            <div key={person.name}>
-              <div className="relative aspect-[4/4.5] overflow-hidden bg-[#eeede9]">
-                <Image src={person.image} alt={person.name} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
-              </div>
-              <h3 className="mt-4 text-lg">{person.name}</h3>
-              <p className="mt-1 text-sm text-ink/60">{person.role}</p>
-            </div>
-          ))}
-        </div>
+        <TeamLeadership />
       </section>
 
       <section className="shell pb-20">
