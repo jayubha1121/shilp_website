@@ -23,23 +23,26 @@ export default async function AboutPage() {
             Place matters because people matter.
           </h2>
         </div>
-        <div className="text-base leading-[1.65] text-ink/65">
+        <div className="text-sm leading-[1.65] text-ink/65">
           <div className="space-y-4">
             <p>
-              SHILP Group is an Ahmedabad-based real estate developer creating thoughtfully designed residential,
-              commercial and plotted developments across Ahmedabad and GIFT City. Founded in 2004 by Mr Yash
-              Brahmbhatt, SHILP has grown from its early beginnings with a small land acquisition into a recognised
-              name among the city&apos;s leading real estate developers.
+              SHILP Group is an Ahmedabad-based real estate developer creating thoughtfully designed residential, commercial and plotted developments across Ahmedabad and GIFT City. Founded in 2004 by Mr Yash Brahmbhatt, SHILP has grown from its early beginnings with a small land acquisition in real estate development into a recognised name among top builders and real estate developers in Ahmedabad. We have developed 20 million+ square feet and delivered over 55 landmark projects across the city, shaping Ahmedabad’s skyline with a portfolio defined by distinctive architecture. We were the first to develop projects on Sindhu Bhavan Road, now a prime location, and continue to pioneer strategic real estate developments.
             </p>
             <p>
-              We have developed 20 million+ square feet and delivered over 55 landmark projects. From pioneering
-              development on Sindhu Bhavan Road to shaping new neighbourhoods, each project is guided by quality,
-              trust and a lasting understanding of the people who will use it.
+              For us, development is not merely about constructing buildings. For decades, SHILP has followed a clear philosophy centred on quality, trust and thoughtful development. We are known for identifying upcoming areas and creating modern, dynamic structures that meet market needs. Each project builds on this foundation, creating spaces that remain relevant across generations.
             </p>
-            <p>
-              Development is more than constructing buildings. It is about creating places that support lives,
-              enable businesses, strengthen communities and contribute meaningfully to the city.
-            </p>
+            <details className="group">
+              <summary className="w-fit cursor-pointer list-inside text-sm text-ink underline underline-offset-4">
+                <span className="group-open:hidden">Read more</span>
+                <span className="hidden group-open:inline">Read less</span>
+              </summary>
+              <div className="mt-4 space-y-4">
+                <p>
+                  At the heart of SHILP is a simple belief: Place Matter because People Matter. Real estate development goes beyond constructing buildings; it is about creating place that support lives, enable businesses, strengthen communities and contribute meaningfully to the city. Guided by craftsmanship, responsibility, trust and thoughtful development, we strive to create spaces that remain relevant and valuable long after construction ends.
+                </p>
+                <p>SHILP is building more than real estate in Ahmedabad. We are creating place that matter.</p>
+              </div>
+            </details>
           </div>
           <Link href="/our-work" className="pill mt-6 text-ink hover:bg-ink hover:text-white">
             Discover our work <ArrowMark />
@@ -59,19 +62,81 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="shell grid gap-12 py-16 sm:py-24 lg:grid-cols-2 lg:items-start">
+      <section className="shell grid items-center gap-8 py-16 sm:gap-12 sm:py-24 lg:grid-cols-2 lg:gap-16 lg:py-28">
         <div className="relative aspect-[4/3] overflow-hidden bg-[#e5e4df]">
-          <Image src="/images/image2.png" alt="Architectural illustration of a Shilp tower" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+          <Image src="/images/image2.png" alt="People meeting in a bright office" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
         </div>
-        <div>
+        <div className="min-w-0 font-sans">
           <p className="text-[10px] uppercase tracking-[.2em] text-ink/45">The SHILP belief</p>
-          <h2 className="mt-5 text-[clamp(2rem,4vw,3.7rem)] font-light leading-[1.05] tracking-[-.045em]">
+          <h2 className="mt-4 text-[clamp(2rem,3.5vw,3.1rem)] font-light leading-[1.05] tracking-[-.045em]">
             We believe places influence lives.
           </h2>
-          <p className="mt-6 max-w-xl text-sm leading-relaxed text-ink/65">
-            Thoughtful environments create opportunity. Trust is earned through consistency, craft reflects
-            responsibility, and growth should strengthen a city&apos;s identity. We believe development extends
-            beyond construction.
+          <div className="mt-5 space-y-1 text-base leading-[1.5]">
+            <p><span className="text-ink/55">We believe</span> thoughtful environments create opportunity.</p>
+            <p><span className="text-ink/55">We believe</span> trust is earned through consistency.</p>
+            <p><span className="text-ink/55">We believe</span> craft reflects responsibility.</p>
+            <p><span className="text-ink/55">We believe</span> growth should strengthen identity.</p>
+            <p><span className="text-ink/55">We believe</span> cities deserve meaningful contribution.</p>
+            <p><span className="text-ink/55">We believe</span> development extends beyond construction.</p>
+          </div>
+          <p className="mt-4 text-base leading-[1.5]">
+            And we believe that the most valuable places are those that continue creating value long after they are
+            built.
+          </p>
+          <Link
+            href="/contact-us"
+            className="mt-6 inline-flex items-center gap-4 rounded-full border border-ink px-7 py-2 text-base transition-colors hover:bg-ink hover:text-white sm:px-8"
+          >
+            Schedule A Visit
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white">
+              <ArrowMark />
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      <section className="shell pb-16 sm:pb-24">
+        <div className="flex items-center gap-4 sm:gap-7">
+          <span className="h-px flex-1 bg-black/20" />
+          <h2 className="shrink-0 text-xl font-light text-ink/70 sm:text-2xl">Why SHILP</h2>
+          <span className="h-px flex-1 bg-black/20" />
+        </div>
+        <div className="mt-8 space-y-4 text-sm leading-relaxed text-ink/65 sm:mt-10 sm:text-base">
+          <p>
+            Choosing a property is choosing more than a building. It is choosing a place, a neighbourhood, a future
+            and a developer you can trust. SHILP brings together deep local understanding, thoughtful development
+            and a long-term commitment to creating places that matter, making it a compelling choice for those
+            looking to buy property in Ahmedabad or GIFT City.
+          </p>
+          <p>
+            SHILP&apos;s journey began in Ahmedabad, and that local understanding continues to shape where and how we
+            develop. From pioneering development on Sindhu Bhavan Road to creating homes and commercial spaces
+            across Bodakdev, Science City, Thaltej, Gota, Shilaj, Shela, Vaishnodevi and other evolving corridors,
+            SHILP has consistently identified locations with the potential to become important parts of the city&apos;s
+            future.
+          </p>
+          <p>
+            SHILP&apos;s expertise extends across residential projects, commercial developments and plotted
+            developments, giving us a broader understanding of how homes, workplaces, businesses and communities
+            come together to shape a city.
+          </p>
+          <p>
+            SHILP&apos;s commitment to the next chapter of Gujarat&apos;s growth extends to GIFT City, where we have
+            established a significant presence across residential and commercial development, reflecting our
+            ambition to create future-ready spaces within one of India&apos;s most important emerging business
+            destinations.
+          </p>
+          <p className="font-medium text-ink/75">Designed With Purpose. Crafted With Responsibility. A Developer Built on Trust</p>
+          <p>
+            Buying a home, office or investment property is a significant decision. SHILP therefore places
+            importance on quality, integrity, customer trust, commitment and responsible execution. Our corporate
+            philosophy emphasises delivering projects on time and building long-term relationships with customers
+            and partners.
+          </p>
+          <p className="font-medium text-ink/75">A Place to Invest. A Place to Belong.</p>
+          <p>
+            Because the right developer doesn&apos;t simply build your property. The right developer helps create the
+            place your future becomes part of. At SHILP, Place Matters.
           </p>
         </div>
       </section>

@@ -184,3 +184,26 @@ export interface TestimonialsSection {
 }
 
 export type ArrowDirection = 'left' | 'right' | 'up' | 'down' | 'up-right';
+
+
+/** Published blog content returned by the public blogs API. */
+export interface BlogPoint {
+  title: string;
+  subtitle: string;
+  content: string;
+  imageUrl?: string;
+  imageAlt?: string;
+}
+
+export interface Blog {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  author: string;
+  date: string;
+  status: string;
+  imageUrl: string;
+  imageAlt: string;
+  points: BlogPoint[];
+}

@@ -43,7 +43,7 @@ export default function CareerOpenings({
     <section className="shell scroll-mt-8 py-12 sm:py-16 lg:py-20" id="career-openings">
       <header className="mx-auto mb-10 max-w-2xl text-center sm:mb-14">
         <h2 className="mt-3 text-[clamp(1.8rem,3.4vw,2.8rem)] font-light leading-[1.05] tracking-[-.045em]">Current openings</h2>
-        <p className="mt-4 text-sm leading-6 text-ink/60">Find a role where your experience and ideas can help shape meaningful places.</p>
+        <p className="mt-4 text-sm leading-6 text-ink/60">If you think you have the talent and the drive to work for the industry's most seasoned professionals with a culture built on collaboration and dedication to unparalleled quality, come and join us.</p>
       </header>
       <div className="grid items-start gap-8 lg:grid-cols-[.9fr_1.1fr] lg:gap-12">
       <div className="lg:pt-2">

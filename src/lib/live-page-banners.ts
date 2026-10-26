@@ -1,4 +1,4 @@
-export type PageBannerKey = 'home' | 'about-us' | 'our-team' | 'careers' | 'project-overview' | 'our-work' | 'contact-us' | 'commercial' | 'residential' | 'plotted';
+export type PageBannerKey = 'home' | 'about-us' | 'our-team' | 'careers' | 'project-overview' | 'our-work' | 'contact-us' | 'commercial' | 'residential' | 'plotted' | 'blog';
 
 export interface LivePageBanner {
   page: PageBannerKey;
