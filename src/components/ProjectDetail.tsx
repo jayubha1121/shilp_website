@@ -8,6 +8,7 @@ import type { ProjectDetail as ProjectDetailData } from '@/types/content';
 import Header from '@/components/Header'; 
 import Footer from '@/components/Footer';
 import ResponsiveBannerImage from '@/components/ResponsiveBannerImage';
+import { openEnquiry } from '@/components/EnquiryModal';
 
 function getYouTubeEmbedUrl(value: string) {
   try {
@@ -100,7 +101,9 @@ export function ProjectDetail({ project }: { project: ProjectDetailData }) {
                 {project.description.split('\n\n').map((paragraph) => <p key={paragraph} className="mt-10 mb-0 text-justify text-[#303030]">{paragraph}</p>)}
               </div>
               <div className="mt-auto flex flex-wrap items-center gap-x-10 gap-y-4 pt-7 text-[clamp(.7rem,.8vw,.95rem)] uppercase tracking-[.12em]">
-                <Link className="w-fit border-b border-[#222] pb-1.5" href="#floor-plans">Inquiry</Link>
+                <button type="button" onClick={() => openEnquiry(project.name)} className="w-fit border-0 border-b border-[#222] bg-transparent p-0 pb-1.5 text-left uppercase tracking-[.12em]">
+                  Inquiry
+                </button>
                 {project.brochureUrl && <a className="w-fit border-b border-[#222] pb-1.5" href={project.brochureUrl} target="_blank" rel="noreferrer">Download brochure <span className="ml-3.5">↗</span></a>}
               </div>
             </div>

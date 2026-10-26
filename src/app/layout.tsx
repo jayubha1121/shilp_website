@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import './globals.css';
 import { site } from '@data/site';
+import EnquiryModal from '@/components/EnquiryModal';
 
 export const metadata: Metadata = {
   title: `${site.name} — ${site.tagline}`,
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="font-sans antialiased">
         {children}
+        <EnquiryModal />
         <a
           href="https://wa.me/919898211567"
           target="_blank"

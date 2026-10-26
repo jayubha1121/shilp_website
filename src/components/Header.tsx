@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Wordmark from './Wordmark';
 import Arrow from './Arrow';
 import { primaryNav, headerCta } from '@data/site';
+import { openEnquiry } from '@/components/EnquiryModal';
 
 type ProjectCategory = 'commercial' | 'residential' | 'plotted';
 
@@ -151,6 +152,13 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center justify-self-end gap-4">
+          <button
+            type="button"
+            onClick={() => openEnquiry()}
+            className="pill text-[11px] text-ink/75 hover:bg-ink hover:text-white sm:text-[12px]"
+          >
+            Enquiry Now
+          </button>
           <Link
             href={headerCta.href}
             className="pill hidden text-[12px] text-ink/75 hover:bg-ink hover:text-white lg:inline-flex"
@@ -229,9 +237,14 @@ export default function Header() {
               </div>;
             })}
 
-            <Link href={headerCta.href} className="pill mt-4 text-ink">
-              {headerCta.label}
-            </Link>
+            <div className="flex flex-wrap gap-3 pt-3">
+              <button type="button" onClick={() => { openEnquiry(); setMobileOpen(false); }} className="pill text-ink">
+                Enquiry Now
+              </button>
+              <Link href={headerCta.href} className="pill text-ink">
+                {headerCta.label}
+              </Link>
+            </div>
           </div>
         </div>
       )}
